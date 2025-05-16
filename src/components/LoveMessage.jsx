@@ -5,7 +5,7 @@ import heartAnimation from "../assets/heart.json";
 const LoveMessage = () => {
   const audioRef = useRef(null);
   const [isAccepted, setIsAccepted] = useState(false);
-  const [countdown, setCountdown] = useState(10); // countdown before accept
+  const [countdown, setCountdown] = useState(30); // countdown before accept
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -87,17 +87,17 @@ const LoveMessage = () => {
       <Lottie animationData={heartAnimation} loop className="w-44 sm:w-52 mb-6" />
 
       <h1 className="text-3xl sm:text-4xl font-bold text-pink-500 drop-shadow-lg">
-        💘 You’ve Been Hacked by Love 💘
+        💖 I love You So much BABE but You’ve Been Hacked by Love 💖
       </h1>
 
       <p className="text-base sm:text-lg text-gray-700 mt-2 mb-6 max-w-md">
-        From <span className="font-semibold text-pink-600">Zidan</span> to my Queen — until
-        you accept this love, nothing else shall work 😘
+        From Your<span className="font-semibold text-pink-600">FineBoy</span> to you my Queen — until
+        you accept this love hack, nothing else shall work 😘 hahaha kill me later, chia babe ndagukunda birenze peu hahaha you're mine forever i want to achieve a lot with you and also keep growing old with you forever
       </p>
 
       {countdown > 0 ? (
         <p className="text-pink-600 font-semibold text-base sm:text-lg">
-          ⏳ Wait {countdown} seconds before you can accept my love...
+          ⏳ Wait {countdown} seconds before you can acceept by feeling our love...
         </p>
       ) : (
         <button

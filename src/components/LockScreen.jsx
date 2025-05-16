@@ -5,7 +5,7 @@ const LockScreen = ({ onUnlock }) => {
   const [typedText, setTypedText] = useState("");
   const [error, setError] = useState("");
   const [countdown, setCountdown] = useState(30);
-  const secret = "babe"; // 💘 change this to her name or a secret
+  const secret = "babe";
   const inputRef = useRef(null);
   const kissAudio = useRef(null);
 
@@ -20,7 +20,6 @@ const LockScreen = ({ onUnlock }) => {
 🧚‍♂️ If your heart is mine... you’ll know the name to set yourself free.
 🔐 Type the only name you call me!! to continue...
 `;
-
 
   useEffect(() => {
     let index = 0;
@@ -48,6 +47,11 @@ const LockScreen = ({ onUnlock }) => {
       });
     }, 1000);
 
+    // 💋 Play kiss audio as terminal starts
+    kissAudio.current?.play().catch((e) => {
+      console.log("Audio autoplay was blocked:", e);
+    });
+
     return () => {
       clearInterval(interval);
       window.removeEventListener("popstate", blockBack);
@@ -58,9 +62,7 @@ const LockScreen = ({ onUnlock }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.toLowerCase() === secret.toLowerCase()) {
-      kissAudio.current?.play();
-
-      // Add confetti effect
+      // 🥳 Confetti and unlock
       const script = document.createElement("script");
       script.src =
         "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js";
@@ -84,7 +86,9 @@ const LockScreen = ({ onUnlock }) => {
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black text-green-400 font-mono flex flex-col items-center justify-center p-4 overflow-hidden">
-      <audio ref={kissAudio} src="/kiss.mp3" />
+      {/* 🔁 Loop kiss.mp3 in background */}
+      <audio ref={kissAudio} src="/kiss.mp3" loop />
+      
       <div className="w-full max-w-lg bg-black border border-green-500 p-4 rounded-lg shadow-md overflow-y-auto h-64 sm:h-72 md:h-80 lg:h-96">
         <pre className="whitespace-pre-wrap text-sm">{typedText}</pre>
       </div>
@@ -113,7 +117,7 @@ const LockScreen = ({ onUnlock }) => {
             type="submit"
             className="p-2 bg-green-600 hover:bg-green-700 rounded text-white w-full sm:w-auto"
           >
-            💚 Unlock Me
+            💚 Unlock My heart babe
           </button>
         </form>
       )}
